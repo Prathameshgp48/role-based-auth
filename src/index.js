@@ -1,6 +1,7 @@
 import express from "express"
 import { configDotenv } from "dotenv"
 import dbConnect  from "./config/dbConnect.js"
+import authRoute from "./routes/authRoutes.js"
 
 configDotenv()
 // dotenv.config()
@@ -24,5 +25,8 @@ dbConnect()
     })
  })
  .catch(err => console.log("Failed to connect database: ", err))
+
+ //ROUTES
+ app.use("/api/v1/auth/", authRoute)
 
 export default app
