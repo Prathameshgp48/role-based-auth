@@ -1,4 +1,4 @@
-import bcyrpt from "bcryptjs"
+import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import User from "../models/userModel.js"
 
@@ -61,16 +61,7 @@ const login = async(req, res) => {
          }
         )
     
-        const newUser = new User({
-            email,
-            username,
-            password: hashedPassword,
-            role
-        })
-    
-        await newUser.save()
-    
-        res.status(200).json({message: "User logged-in succesfully"})
+        res.status(200).json({message: "User logged-in succesfully", token: token})
     } catch (error) {
         res.status(500).json({message: "Something went wrong", err: error.message})
     }
