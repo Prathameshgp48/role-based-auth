@@ -2,6 +2,7 @@ import express from "express"
 import { configDotenv } from "dotenv"
 import dbConnect  from "./config/dbConnect.js"
 import authRouter from "./routes/authRoutes.js"
+import userRouter from "./routes/userRoutes.js"
 
 configDotenv()
 // dotenv.config()
@@ -28,5 +29,6 @@ dbConnect()
 
  //ROUTES
  app.use("/api/v1/auth/", authRouter)
+ app.use("/api/v1/users/", userRouter)
 
 export default app
